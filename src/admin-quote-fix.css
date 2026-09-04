@@ -1,0 +1,11 @@
+.solution-editor,.editor-scroll,.editor-scroll section,.pricing-section,.price-config,.shipping-config{min-width:0}
+.solution-editor{max-width:100vw;overflow:hidden}
+.editor-scroll{max-width:100%;overflow-x:hidden;overflow-y:auto}
+.pricing-section{overflow:hidden}
+.price-config{grid-template-columns:minmax(0,1fr) minmax(120px,.55fr)}
+.price-preview{grid-column:1/-1;min-width:0}
+.price-config label,.shipping-config label{min-width:0;width:100%}
+.price-config input,.shipping-config input{display:block;width:100%;min-width:0;max-width:100%}
+.shipping-config{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:20px}
+.shipping-config>div{grid-column:1/-1}
+@media(max-width:600px){.price-config,.shipping-config{grid-template-columns:minmax(0,1fr)}.price-preview,.shipping-config>div{grid-column:1}.shipping-config{padding:15px}.pricing-section>.section-title{align-items:flex-start}.pricing-section>.section-title>svg{flex:0 0 28px}}

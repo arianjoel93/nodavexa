@@ -1,0 +1,12 @@
+.upload-box.has-preview{border-style:solid;background:#211815}
+.upload-box.has-preview img{position:static;width:100%;height:100%;object-fit:contain}
+.visual-actions{display:flex;gap:10px;flex-wrap:wrap;margin:-4px 0 20px}
+.visual-actions .upload-action,.visual-actions .remove-asset{min-height:42px;padding:10px 14px;border:1px solid var(--brown);display:inline-flex;align-items:center;justify-content:center;gap:8px;background:white;color:var(--brown);font-weight:700;position:relative}
+.visual-actions .upload-action input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.visual-actions .remove-asset{border-color:#c86a57;color:#a53f2e}
+.visual-actions svg{width:17px;height:17px}
+.visual-links{margin-top:4px}
+.section-help{color:#897970;font-size:13px;margin-bottom:16px}
+.document-row button:disabled,.remove-asset:disabled{opacity:.5;cursor:wait}
+.detail-actions{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:600px){.visual-links{grid-template-columns:1fr}.visual-actions>*{width:100%}}
