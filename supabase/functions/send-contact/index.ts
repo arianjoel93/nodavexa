@@ -10,11 +10,17 @@ Deno.serve(async req=>{
   if(req.method==="OPTIONS")return new Response("ok",{headers:cors})
   if(req.method!=="POST")return json({error:"Método no permitido"},405)
   try{
+    const contentLength=Number(req.headers.get("content-length")||0)
+    if(contentLength>20000)return json({error:"Solicitud demasiado grande"},413)
     const body=await req.json()
+    if(!body||typeof body!=="object")return json({error:"Datos inválidos"},400)
     if(body.website)return json({ok:true})
     const name=String(body.name||"").trim().slice(0,100),company=String(body.company||"").trim().slice(0,120),email=String(body.email||"").trim().toLowerCase().slice(0,180),phone=String(body.phone||"").trim().slice(0,40),message=String(body.message||"").trim().slice(0,5000)
     if(name.length<2||company.length<2||message.length<20||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return json({error:"Datos inválidos"},400)
     const supabase=createClient(Deno.env.get("SUPABASE_URL")!,Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!)
+    const recentSince=new Date(Date.now()-5*60*1000).toISOString()
+    const{data:recent}=await supabase.from("contact_messages").select("id").eq("email",email).eq("company",company).eq("message",message).gte("created_at",recentSince).limit(1)
+    if(recent?.length)return json({ok:true,deduplicated:true})
     const{error:dbError}=await supabase.from("contact_messages").insert({name,company,email,phone,message})
     if(dbError)throw dbError
     let password=Deno.env.get("HOSTINGER_SMTP_PASSWORD")

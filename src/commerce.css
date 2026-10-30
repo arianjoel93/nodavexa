@@ -19,6 +19,7 @@
 .catalog-type-tabs button{padding:13px 20px;border:1px solid #d9cec7;background:white;font-weight:700}
 .catalog-type-tabs button.active{background:var(--brown);color:white}
 .site-header .nav-free{font-weight:800;color:var(--brown)}
+.card-free-plan{display:flex;flex-direction:column;gap:4px;border-left:3px solid #3c8758;background:#eff8f1;padding:10px 12px;margin:14px 0;color:#245d38}.card-free-plan strong{font-size:13px}.card-free-plan span{font-size:11px;color:#477256}.bodegalia-plan-note{display:flex;flex-direction:column;gap:8px;border-left:4px solid #3c8758;background:#eff8f1;padding:16px 18px;margin:22px 0;max-width:520px;color:#245d38}.bodegalia-plan-note span{color:#477256;font-size:14px;letter-spacing:0}.bodegalia-plan-note a{display:inline-flex;align-items:center;gap:6px;color:#245d38;font-weight:800;font-size:13px}
 :focus-visible{outline:3px solid #b66a4d;outline-offset:3px}
 @media(max-width:800px){.commercial-paths{grid-template-columns:1fr}.commercial-path{padding:27px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
