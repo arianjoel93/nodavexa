@@ -215,6 +215,7 @@ function BodegaliaFeature() {
       <span className="section-index">PRODUCTO DESARROLLADO POR NODAVEXA</span>
       <h2 id="home-bodegalia-title">Bodegalia: inventario claro, operación bajo control.</h2>
       <p>Un sistema para saber qué tienes, dónde está y cómo se mueve. Reúne existencias, movimientos y almacenes en una vista práctica para el trabajo diario.</p>
+      <p className="home-bodegalia-free-plan"><strong>Plan gratuito disponible.</strong> Consulta funciones y condiciones en el sitio oficial.</p>
       <ul><li>Existencias por producto y almacén</li><li>Entradas, salidas y transferencias</li><li>Historial de movimientos y responsables</li></ul>
       <Link className="home-bodegalia-link" to="/bodegalia" onClick={() => trackEvent('product_card_click', { product: 'Bodegalia', page_slug: 'home', cta_location: 'featured_product' })}>Conocer Bodegalia y visitar su sitio oficial <ArrowRight /></Link>
     </div>

@@ -7,9 +7,10 @@ import Highlight from '@tiptap/extension-highlight'
 import Color from '@tiptap/extension-color'
 import TextStyle from '@tiptap/extension-text-style'
 import { AlignCenter, AlignJustify, AlignLeft, AlignRight, Bold, Code, Highlighter, Italic, Link2, List, ListOrdered, Minus, Pilcrow, Quote, Redo2, Strikethrough, Underline as UnderlineIcon, Undo2, Unlink } from 'lucide-react'
+import { sanitizeRichText } from '../lib/sanitize-html'
 
 export function RichTextEditor({value,onChange}:{value:string,onChange:(html:string)=>void}) {
-  const editor=useEditor({extensions:[StarterKit,Underline,TextStyle,Color,Highlight.configure({multicolor:true}),TextAlign.configure({types:['heading','paragraph']}),Link.configure({openOnClick:false,autolink:true,HTMLAttributes:{rel:'noopener noreferrer'}})],content:value,onUpdate:({editor})=>onChange(editor.getHTML())})
+  const editor=useEditor({extensions:[StarterKit,Underline,TextStyle,Color,Highlight.configure({multicolor:true}),TextAlign.configure({types:['heading','paragraph']}),Link.configure({openOnClick:false,autolink:true,HTMLAttributes:{rel:'noopener noreferrer'}})],content:value,onUpdate:({editor})=>onChange(sanitizeRichText(editor.getHTML()))})
   if(!editor)return null
   const link=()=>{const previous=editor.getAttributes('link').href||'';const url=window.prompt('URL del enlace',previous);if(url===null)return;if(!url){editor.chain().focus().extendMarkRange('link').unsetLink().run();return}editor.chain().focus().extendMarkRange('link').setLink({href:url}).run()}
   const Btn=({title,active=false,onClick,children}:{title:string,active?:boolean,onClick:()=>void,children:React.ReactNode})=><button type="button" title={title} aria-label={title} className={active?'active':''} onClick={onClick}>{children}</button>

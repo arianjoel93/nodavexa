@@ -25,6 +25,7 @@ export function SolutionCard({ solution, index = 0 }: { solution: Solution; inde
       <div className="card-body">
         <h3>{positioning.title}</h3>
         <p>{positioning.excerpt}</p>
+        {solution.slug === 'sistema-de-inventario-y-control-de-almacenes' && <div className="card-free-plan"><strong>Plan gratuito disponible</strong><span>Consulta funciones y condiciones en el sitio oficial.</span></div>}
         {price.show && (
           <div className="card-price software-card-price commercial-card-price">
             <small>{price.mode === 'diagnosis' ? 'Diagnóstico previo' : price.primaryLabel}</small>

@@ -186,7 +186,11 @@ const homeSchema = {
     { '@type': 'WebPage', name: homeTitle, description: homeDescription, url: `${site}/`, isPartOf: { '@id': `${site}/#website` }, inLanguage: 'es-MX' },
   ],
 }
-await writeFile(path.join(dist, 'index.html'), createPage({ title: homeTitle, description: homeDescription, route: '/', body: homeBody, schema: homeSchema, canonical: `${site}/` }))
+const homeBodyForSeo = homeBody.replace(
+  /(<h2>Bodegalia: inventario claro, operación bajo control<\/h2>[\s\S]*?)(<\/section>)/,
+  '$1<p><strong>Plan gratuito disponible.</strong> Consulta funciones y condiciones en el sitio oficial de Bodegalia.</p>$2',
+)
+await writeFile(path.join(dist, 'index.html'), createPage({ title: homeTitle, description: homeDescription, route: '/', body: homeBodyForSeo, schema: homeSchema, canonical: `${site}/` }))
 
 const corePages = [
   ['/soluciones', 'Soluciones de software para ventas, inventario y procesos | Nodavexa', 'Explora CRM y gestión comercial, inventarios, sistemas para clínicas, integraciones Odoo y APIs, automatización y aplicaciones web a medida.', '<h1>Soluciones de software para ventas, inventario y procesos</h1><p>Revisa sistemas publicados y áreas de trabajo de Nodavexa para digitalizar la operación de empresas.</p>'],

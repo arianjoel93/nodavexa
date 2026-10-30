@@ -5,6 +5,7 @@ import { Seo, seoDefaults } from '../components/Seo'
 import { trackEvent } from '../lib/analytics'
 import { fetchSuccessCases } from '../lib/supabase'
 import type { SuccessCase } from '../types'
+import { sanitizeRichText } from '../lib/sanitize-html'
 
 export function SuccessCaseDetail() {
   const { slug = '' } = useParams()
@@ -48,7 +49,7 @@ export function SuccessCaseDetail() {
     </section>
     <section className="case-story">
       <article><span>PROBLEMA</span><h2>El reto de la operación</h2><p>{item.problem}</p></article>
-      {item.description && <article className="case-description rich-content"><span>SOLUCIÓN E IMPLEMENTACIÓN</span><h2>Trabajo realizado</h2><div dangerouslySetInnerHTML={{ __html: item.description }} /></article>}
+      {item.description && <article className="case-description rich-content"><span>SOLUCIÓN E IMPLEMENTACIÓN</span><h2>Trabajo realizado</h2><div dangerouslySetInnerHTML={{ __html: sanitizeRichText(item.description) }} /></article>}
       <article className="case-result"><CheckCircle2 /><span>RESULTADO OPERATIVO</span><h2>Resultado descrito</h2><p>{item.result}</p></article>
     </section>
     {bodegaliaCase && <section className="case-product-link"><span className="section-index">PRODUCTO RELACIONADO</span><h2>Conoce Bodegalia</h2><p>Explora el sistema de inventarios y almacenes relacionado con este proyecto.</p><Link className="btn primary" to="/bodegalia">Ver Bodegalia</Link></section>}

@@ -9,6 +9,7 @@ import { QuoteCalculator } from '../components/QuoteCalculator'
 import { Seo, seoDefaults } from '../components/Seo'
 import posthog from '../lib/posthog'
 import { trackEvent } from '../lib/analytics'
+import { sanitizeRichText } from '../lib/sanitize-html'
 import {
   getSolutionPositioning,
   getSolutionPricePresentation,
@@ -120,7 +121,7 @@ export function SolutionDetail() {
       )}
       {solution.quote_enabled && !isSoftware && Number(solution.base_price_mxn) > 0 && <QuoteCalculator solution={solution} />}
       <section className="detail-content">
-        <article className="rich-content" dangerouslySetInnerHTML={{ __html: solution.description }} />
+        <article className="rich-content" dangerouslySetInnerHTML={{ __html: sanitizeRichText(solution.description) }} />
         <aside>
           <h3>Equipos incluidos</h3>
           {solution.equipment.length ? (

@@ -1,1 +1,2 @@
 .card-price{display:grid;grid-template-columns:auto 1fr;align-items:end;margin:4px 0 20px;padding-top:16px;border-top:1px solid #eee5df}.card-price small{font-size:10px;color:#8b7b72;grid-column:1/-1}.card-price b{font:800 23px Manrope;color:var(--brown)}.card-price span{font-size:10px;color:#8b7b72;text-align:right}
+.card-free-plan{display:grid;gap:3px;margin:4px 0 20px;padding:12px 14px;border-left:3px solid var(--clay);background:#f7f2ec;font-size:12px;line-height:1.45}.card-free-plan strong{color:var(--brown)}.card-free-plan span{color:#8b7b72}

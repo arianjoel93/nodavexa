@@ -86,6 +86,7 @@ export function ProductLanding() {
         <p className="product-lead">{product.lead}</p>
         <p className="product-intro">{product.intro}</p>
         {isBodegalia && <p className="product-origin"><BadgeCheck aria-hidden="true" /><span><strong>Producto oficial de Nodavexa</strong>Consulta funciones, novedades y acceso comercial directamente en el sitio de Bodegalia.</span></p>}
+        {isBodegalia && <p className="product-free-plan"><strong>Plan gratuito disponible.</strong> Consulta funciones y condiciones en el sitio oficial.</p>}
         <div className="product-actions">
           {isBodegalia
             ? <a className="btn primary" href={officialUrl} target="_blank" rel="noreferrer" onClick={() => trackInterest('official_site_hero')}>Visitar sitio oficial <ExternalLink /></a>
