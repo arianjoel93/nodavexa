@@ -1,2 +1,92 @@
-import { useEffect,useMemo,useState } from 'react'; import { Search } from 'lucide-react'; import { fetchSolutions } from '../lib/supabase'; import type { Solution } from '../types'; import { SolutionCard } from '../components/SolutionCard'; import { useSearchParams } from 'react-router-dom'
-export function Solutions(){const [params,setParams]=useSearchParams(),type=params.get('tipo')||'all';const [items,setItems]=useState<Solution[]>([]),[query,setQuery]=useState(''),[category,setCategory]=useState('Todas');useEffect(()=>{fetchSolutions().then(setItems).catch(()=>{})},[]);const categories=['Todas',...new Set(items.map(x=>x.category))];const shown=useMemo(()=>items.filter(x=>(type==='all'||x.item_type===type)&&(category==='Todas'||x.category===category)&&`${x.name} ${x.excerpt}`.toLowerCase().includes(query.toLowerCase())),[items,query,category,type]);return <><section className="page-hero"><span className="section-index">SOLUCIONES</span><h1>Productos y soluciones<br/><em>para tu operación.</em></h1><p>Explora productos de software y servicios de implementación a medida. Bodegalia cuenta con un plan gratuito.</p></section><section className="catalog"><div className="catalog-type-tabs" role="group" aria-label="Tipo de solución">{[{value:"all",label:"Todo"},{value:"product",label:"Productos"},{value:"solution",label:"Soluciones a medida"}].map(tab=><button key={tab.value} className={type===tab.value?"active":""} aria-pressed={type===tab.value} onClick={()=>{setCategory("Todas");setParams(tab.value==="all"?{}:{tipo:tab.value})}}>{tab.label}</button>)}</div><div className="catalog-tools"><div className="categories">{categories.map(c=><button className={c===category?'active':''} onClick={()=>setCategory(c)} key={c}>{c}</button>)}</div><label><Search/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Buscar solución"/></label></div><div className="solutions-grid">{shown.map((s,i)=><SolutionCard key={s.id} solution={s} index={i}/>)}</div>{!shown.length&&<div className="empty">No hay publicaciones disponibles con estos filtros.</div>}</section></>}
+import { useEffect, useMemo, useState } from 'react'
+import { ArrowRight, Search } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { SolutionCard } from '../components/SolutionCard'
+import { ProcessDiagnostic } from '../components/landing/ProcessDiagnostic'
+import { getSolutionPositioning, type CommercialGroup } from '../lib/solution-positioning'
+import { fetchSolutions } from '../lib/supabase'
+import type { Solution } from '../types'
+
+const groups: Array<'Todas' | CommercialGroup> = [
+  'Todas',
+  'CRM y ventas',
+  'Inventarios y almacenes',
+  'Aplicaciones a medida',
+]
+
+export function Solutions() {
+  const [items, setItems] = useState<Solution[]>([])
+  const [query, setQuery] = useState('')
+  const [category, setCategory] = useState<'Todas' | CommercialGroup>('Todas')
+
+  useEffect(() => {
+    fetchSolutions().then(setItems).catch(() => {})
+  }, [])
+
+  const shown = useMemo(
+    () =>
+      items.filter((solution) => {
+        const positioning = getSolutionPositioning(solution)
+        const matchesCategory = category === 'Todas' || positioning.group === category
+        const searchText = `${positioning.title} ${positioning.excerpt} ${positioning.group} ${solution.name} ${solution.excerpt}`.toLowerCase()
+        return matchesCategory && searchText.includes(query.toLowerCase())
+      }),
+    [items, query, category],
+  )
+
+  return (
+    <>
+      <section className="page-hero solutions-hero">
+        <span className="section-index">SOLUCIONES Y PRODUCTOS</span>
+        <h1>
+          CRM, inventarios y apps
+          <br />
+          <em>para operar mejor.</em>
+        </h1>
+        <p>
+          Nuestro enfoque principal es construir sistemas que resuelven trabajo real: seguimiento de clientes, control de
+          ventas, inventarios, procesos internos y herramientas a medida para equipos que ya no quieren depender de hojas
+          dispersas.
+        </p>
+      </section>
+      <section className="catalog">
+        <div className="catalog-tools">
+          <div className="categories">
+            {groups.map((group) => (
+              <button className={group === category ? 'active' : ''} onClick={() => setCategory(group)} key={group}>
+                {group}
+              </button>
+            ))}
+          </div>
+          <label>
+            <Search />
+            <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar CRM, inventario o proceso" />
+          </label>
+        </div>
+        <p className="catalog-note">
+          Para CRM y desarrollos a medida recomendamos diagnosticar antes de cotizar. Cuando la solución ya está
+          paquetizada, mostramos un precio base para ayudarte a decidir más rápido.
+        </p>
+        <div className="solutions-grid">{shown.map((solution, index) => <SolutionCard key={solution.id} solution={solution} index={index} />)}</div>
+        {!shown.length && <div className="empty">No encontramos soluciones con esos criterios.</div>}
+      </section>
+      <ProcessDiagnostic />
+      <section className="solution-areas">
+        <div className="solution-areas-heading">
+          <span className="section-index">QUÉ PODEMOS RESOLVER</span>
+          <h2>Conoce las áreas en las que podemos ayudarte.</h2>
+          <p>Partimos de tu proceso actual y definimos si conviene configurar, integrar o desarrollar una herramienta.</p>
+        </div>
+        <div className="solution-areas-grid">
+          <details><summary>CRM y gestión comercial</summary><p>Centraliza prospectos, clientes, cotizaciones, responsables y seguimientos para que el equipo tenga claro el estado de cada oportunidad y el siguiente paso.</p></details>
+          <details><summary>Inventarios y almacenes</summary><p>Registra existencias, entradas, salidas y movimientos con consultas y reportes que ayuden a mantener la información operativa al día.</p></details>
+          <details><summary>Sistemas para clínicas y servicios</summary><p>Organiza agenda, atención, expedientes y tareas administrativas de acuerdo con la forma de trabajo de clínicas, consultorios y negocios de servicios.</p></details>
+          <details><summary>Integraciones Odoo, APIs y sistemas externos</summary><p>Conecta plataformas y fuentes de datos para reducir recapturas y mantener información consistente entre herramientas.</p></details>
+          <details><summary>Automatización de procesos e IA</summary><p>Identifica tareas repetitivas que pueden automatizarse y define controles para que el flujo siga siendo claro y supervisable.</p></details>
+          <details><summary>Software y aplicaciones a medida</summary><p>Desarrolla portales, aplicaciones web y sistemas internos cuando las herramientas disponibles no cubren los requisitos de tu operación.</p></details>
+        </div>
+        <Link className="btn primary" to="/contacto">Cuéntanos qué necesitas resolver <ArrowRight size={17} /></Link>
+      </section>
+    </>
+  )
+}

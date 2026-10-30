@@ -1,0 +1,43 @@
+begin;
+do $$
+declare uid uuid; other_uid uuid; w jsonb; pid uuid; rid uuid:=gen_random_uuid(); caught boolean;
+begin
+ select id into uid from auth.users where not exists(select 1 from public.resource_inventory_accounts a where a.user_id=auth.users.id) limit 1;
+ if uid is null then raise exception 'Se necesita una cuenta sin inventario para estas pruebas.'; end if;
+ perform set_config('request.jwt.claim.sub',uid::text,true);
+ w:=public.resource_inventory_action('workspace','{}');
+ assert w->'account'->>'anchor_at' is null, 'No debe iniciar el mes al abrir';
+ perform public.resource_inventory_action('product','{"sku":"001-A / especial","name":"Producto prueba","unit":"kg","minimum":2}');
+ select id into pid from public.resource_inventory_products where user_id=uid;
+ perform public.resource_inventory_action('move',jsonb_build_object('product_id',pid,'kind','in','quantity',10.25,'request_id',rid));
+ perform public.resource_inventory_action('move',jsonb_build_object('product_id',pid,'kind','in','quantity',10.25,'request_id',rid));
+ assert (select stock=10.25 from public.resource_inventory_products where id=pid), 'Duplicó solicitud';
+ assert (select used=1 and anchor_at is not null from public.resource_inventory_accounts where user_id=uid), 'Cupo o inicio incorrecto';
+ caught:=false;
+ begin perform public.resource_inventory_action('move',jsonb_build_object('product_id',pid,'kind','out','quantity',11,'request_id',gen_random_uuid())); exception when raise_exception then caught:=true; end;
+ assert caught, 'Permitió stock negativo';
+ caught:=false;
+ begin perform public.resource_inventory_action('move',jsonb_build_object('product_id',pid,'kind','in','quantity',0,'request_id',gen_random_uuid())); exception when raise_exception then caught:=true; end;
+ assert caught, 'Permitió cantidad cero';
+ perform public.resource_inventory_action('move',jsonb_build_object('product_id',pid,'kind','out','quantity',0.25,'request_id',gen_random_uuid()));
+ for i in 3..15 loop perform public.resource_inventory_action('move',jsonb_build_object('product_id',pid,'kind','in','quantity',1,'request_id',gen_random_uuid())); end loop;
+ caught:=false;
+ begin perform public.resource_inventory_action('move',jsonb_build_object('product_id',pid,'kind','in','quantity',1,'request_id',gen_random_uuid())); exception when raise_exception then caught:=true; end;
+ assert caught, 'Permitió movimiento 16';
+ update public.resource_inventory_accounts set anchor_at=now()-interval '1 month',period_start=now()-interval '1 month',period_end=now()-interval '1 second' where user_id=uid;
+ w:=public.resource_inventory_action('workspace','{}');
+ assert (w->'account'->>'used')::int=0 and (w->>'movement_count')::int=15, 'Renovación borró historia';
+ assert (select stock=23 from public.resource_inventory_products where id=pid), 'Renovación alteró stock';
+ for i in 2..30 loop perform public.resource_inventory_action('product',jsonb_build_object('sku','TEST-'||i,'name','Prueba','unit','pieza')); end loop;
+ caught:=false;
+ begin perform public.resource_inventory_action('product','{"sku":"EXTRA","name":"Extra","unit":"pieza"}'); exception when raise_exception then caught:=true; end;
+ assert caught, 'Permitió producto 31';
+ select id into other_uid from auth.users where id<>uid limit 1;
+ if other_uid is not null then
+   perform set_config('request.jwt.claim.sub',other_uid::text,true);
+   caught:=false;
+   begin perform public.resource_inventory_action('move',jsonb_build_object('product_id',pid,'kind','out','quantity',1,'request_id',gen_random_uuid())); exception when raise_exception then caught:=true; end;
+   assert caught, 'Permitió usar producto de otra cuenta';
+ end if;
+end $$;
+rollback;

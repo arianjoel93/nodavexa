@@ -1,0 +1,57 @@
+[
+  {
+    "event": "contact_form_submitted",
+    "description": "A visitor successfully submits the diagnostic contact form.",
+    "file": "src/pages/Contact.tsx"
+  },
+  {
+    "event": "whatsapp_diagnosis_requested",
+    "description": "A visitor opens WhatsApp from a diagnosis call to action.",
+    "file": "src/pages/Home.tsx"
+  },
+  {
+    "event": "demo_requested",
+    "description": "A visitor opens WhatsApp to request a CRM demo.",
+    "file": "src/pages/Home.tsx"
+  },
+  {
+    "event": "solution_inquiry_requested",
+    "description": "A visitor opens WhatsApp to inquire about a solution.",
+    "file": "src/pages/SolutionDetail.tsx"
+  },
+  {
+    "event": "shipping_quote_calculated",
+    "description": "A visitor receives an available shipping quote.",
+    "file": "src/components/QuoteCalculator.tsx"
+  },
+  {
+    "event": "shipping_quote_requested",
+    "description": "A visitor opens WhatsApp to request the calculated quote.",
+    "file": "src/components/QuoteCalculator.tsx"
+  },
+  {
+    "event": "admin_login_succeeded",
+    "description": "An administrator successfully signs in.",
+    "file": "src/pages/Admin.tsx"
+  },
+  {
+    "event": "admin_solution_saved",
+    "description": "An administrator successfully creates or updates a solution publication.",
+    "file": "src/components/AdminSolutionEditor.tsx"
+  },
+  {
+    "event": "admin_success_case_saved",
+    "description": "An administrator successfully creates or updates a success case.",
+    "file": "src/components/AdminCaseEditor.tsx"
+  },
+  {
+    "event": "admin_success_case_video_saved",
+    "description": "An administrator successfully creates or updates a success-case video.",
+    "file": "src/components/AdminCaseVideoEditor.tsx"
+  },
+  {
+    "event": "admin_contact_settings_saved",
+    "description": "An administrator successfully updates public contact settings.",
+    "file": "src/components/AdminSettings.tsx"
+  }
+]

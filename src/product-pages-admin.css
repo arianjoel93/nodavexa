@@ -1,0 +1,94 @@
+.admin-product-page-form {
+  max-width: 900px;
+  margin-top: 24px;
+  padding: 28px;
+  background: #fff;
+  border: 1px solid #e4dad4;
+}
+
+.admin-product-page-form > section {
+  border-top: 1px solid #e4dad4;
+  margin-top: 28px;
+  padding-top: 28px;
+}
+
+.admin-product-page-form h3 {
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+
+.admin-product-page-form p {
+  color: #71625a;
+}
+
+.admin-product-page-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  min-width: 0;
+}
+
+.admin-product-page-form input:not([type='checkbox']),
+.admin-product-page-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d6cbc4;
+  background: #fff;
+  color: var(--ink);
+  resize: vertical;
+}
+
+.admin-product-page-form .publish-options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.admin-product-page-form .equipment-form {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.admin-product-page-form .equipment-form > div,
+.admin-product-page-form .equipment-form .full {
+  grid-column: 1;
+}
+
+.admin-product-page-form .equipment-form > div button {
+  border: 0;
+  background: transparent;
+}
+
+.admin-product-page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .admin-shell > aside {
+    display: flex;
+    padding: 14px 18px;
+  }
+
+  .admin-shell > aside nav {
+    margin-top: 14px;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .admin-shell > aside nav button,
+  .admin-shell > aside nav a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .admin-shell > aside > button { margin-top: 8px; }
+}
+
+@media (max-width: 600px) {
+  .admin-product-page-form { padding: 18px; }
+  .admin-product-page-form .section-title { align-items: flex-start; gap: 12px; flex-direction: column; }
+}

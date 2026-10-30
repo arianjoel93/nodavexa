@@ -1,0 +1,99 @@
+body {
+  font-family: Inter, 'DM Sans', system-ui, sans-serif;
+  background: #fff;
+  color: #111315;
+}
+
+.site-header {
+  height: 84px;
+  background: rgba(17, 19, 21, .97);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+}
+
+.logo {
+  color: #fff;
+}
+
+.logo span,
+.footer-main h4 {
+  font-family: Inter, 'Manrope', system-ui, sans-serif;
+}
+
+.logo span {
+  letter-spacing: .12em;
+}
+
+.site-header nav {
+  gap: 28px;
+  color: #e5e7e8;
+  font-family: Inter, 'DM Sans', system-ui, sans-serif;
+}
+
+.site-header nav > a:not(.nav-cta) {
+  font-weight: 700;
+}
+
+.site-header nav > a:not(.nav-cta).active,
+.site-header nav > a:not(.nav-cta):hover {
+  color: #b66a4d;
+}
+
+.nav-cta {
+  border-color: #6f412f;
+  background: #6f412f;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 800;
+  box-shadow: 0 14px 30px rgba(111, 65, 47, .24);
+}
+
+.nav-cta:hover {
+  background: #80513e;
+  border-color: #80513e;
+}
+
+.whatsapp-float {
+  border-radius: 999px;
+  background: #10141f;
+  color: #fff;
+  box-shadow: 0 18px 42px rgba(20, 28, 44, .22);
+}
+
+footer {
+  background: #0f131d;
+  color: #c6d0df;
+}
+
+footer .logo-light {
+  color: #fff;
+}
+
+.footer-main > p,
+.footer-main a,
+.footer-main span {
+  color: #aab4c4;
+}
+
+.footer-bottom {
+  border-top-color: #252d3a;
+  color: #8d98aa;
+}
+
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    height: 72px;
+  }
+
+  .site-header nav {
+    background: #111315;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, .25);
+  }
+}

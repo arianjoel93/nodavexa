@@ -1,0 +1,115 @@
+[
+  {
+    "slug": "nodavexa-control",
+    "product": "Nodavexa Control",
+    "title": "Nodavexa Control | CRM y control comercial para PYMES",
+    "description": "Centraliza clientes, cotizaciones, seguimiento, pedidos y actividad comercial con Nodavexa Control.",
+    "h1": "Tu operación comercial en un solo lugar",
+    "lead": "Clientes, oportunidades, cotizaciones, seguimiento y pedidos dentro de un sistema adaptado a tu empresa.",
+    "whatsapp": "Hola, me interesa conocer Nodavexa Control.",
+    "intro": "Nodavexa Control organiza la información comercial para que el equipo consulte el historial y tenga claro cuál es el siguiente paso.",
+    "flow": ["Clientes", "Oportunidades", "Cotizaciones", "Seguimiento", "Pedidos", "Indicadores"],
+    "sections": [
+      {
+        "heading": "Problemas que resuelve",
+        "copy": "Cuando cada vendedor conserva sus propios archivos y conversaciones, dar seguimiento y entender la actividad comercial se vuelve difícil.",
+        "items": ["Clientes repartidos entre Excel y WhatsApp.", "Cotizaciones que se envían y quedan sin seguimiento.", "Información duplicada o incompleta.", "Poca visibilidad de actividades y oportunidades.", "Dificultad para revisar el avance de vendedores y pedidos."]
+      },
+      {
+        "heading": "Funciones principales",
+        "copy": "El alcance se define según el proceso y puede incluir módulos como:",
+        "items": ["Clientes y contactos centralizados.", "Oportunidades y etapas del pipeline.", "Cotizaciones, pedidos y actividades.", "Seguimientos e historial comercial.", "Dashboard e indicadores.", "Usuarios, permisos y trazabilidad."]
+      },
+      {
+        "heading": "Cómo funciona",
+        "copy": "El equipo registra cada relación y actividad en un flujo común; la información queda disponible para continuar el proceso comercial desde el siguiente paso."
+      },
+      {
+        "heading": "Para qué empresas",
+        "copy": "Es una opción para empresas que gestionan clientes, propuestas y ventas con hojas de cálculo, mensajes y varios archivos, y necesitan un proceso comercial más visible."
+      },
+      {
+        "heading": "Personalización e integraciones",
+        "copy": "Podemos configurar módulos, permisos y etapas, además de revisar integraciones con APIs, Odoo, formularios u otros sistemas existentes. La viabilidad técnica y el alcance se confirman durante el diagnóstico."
+      }
+    ],
+    "audiences": ["PYMES con ventas consultivas", "Equipos comerciales", "Empresas que cotizan productos o servicios"],
+    "price": "Implementaciones desde $6970 MXN + IVA",
+    "priceNote": "El precio final depende del alcance, usuarios, módulos e integraciones requeridas."
+  },
+  {
+    "slug": "bodegalia",
+    "product": "Bodegalia",
+    "title": "Bodegalia | Control de inventarios y almacenes | Nodavexa",
+    "description": "Bodegalia es el software de inventarios desarrollado por Nodavexa para controlar existencias, movimientos y múltiples almacenes.",
+    "h1": "Controla tu inventario sin depender de hojas dispersas",
+    "lead": "Bodegalia organiza productos, existencias y movimientos de uno o varios almacenes en una sola aplicación web.",
+    "whatsapp": "Hola, me interesa conocer Bodegalia para controlar inventarios y almacenes.",
+    "intro": "Un producto desarrollado y recomendado por Nodavexa para saber qué tienes, dónde está y quién realizó cada movimiento.",
+    "flow": ["Productos", "Existencias", "Entradas", "Transferencias", "Salidas", "Reportes"],
+    "sections": [
+      {
+        "heading": "De Excel a un inventario centralizado",
+        "copy": "Cuando varias personas actualizan archivos distintos, las existencias dejan de reflejar lo que realmente ocurre. Bodegalia reúne productos, almacenes y movimientos en una sola fuente de consulta.",
+        "items": ["Información de inventario en un solo sistema.", "Consulta rápida de productos y existencias.", "Menos dependencia de archivos manuales.", "Una operación compartida por todo el equipo."]
+      },
+      {
+        "heading": "Organiza lo que tienes y dónde está",
+        "copy": "Administra el catálogo de productos y consulta las cantidades disponibles en cada almacén o ubicación registrada.",
+        "items": ["Productos y códigos internos.", "Existencias por almacén.", "Administración de uno o varios almacenes.", "Búsqueda y consulta de disponibilidad."]
+      },
+      {
+        "heading": "Cada movimiento conserva su historia",
+        "copy": "Registra entradas, salidas y transferencias con la información necesaria para entender qué cambió, cuándo ocurrió y quién realizó la operación.",
+        "items": ["Entradas y salidas de mercancía.", "Transferencias entre almacenes.", "Historial por operación y responsable.", "Trazabilidad para revisar diferencias."]
+      },
+      {
+        "heading": "Información preparada para supervisar",
+        "copy": "Consulta reportes de inventario y movimientos para revisar la actividad del almacén, respaldar procesos administrativos y facilitar auditorías internas.",
+        "items": ["Reportes de inventario.", "Consultas de entradas, salidas y transferencias.", "Comprobantes asociados a movimientos.", "Visibilidad para responsables y supervisores."]
+      },
+      {
+        "heading": "Un producto web para la operación diaria",
+        "copy": "Bodegalia funciona desde el navegador y permite que la información permanezca centralizada. Es una solución desarrollada por Nodavexa para empresas que necesitan control operativo sin implementar un ERP completo."
+      }
+    ],
+    "audiences": ["Distribuidoras y comercializadoras", "Empresas con uno o varios almacenes", "Ferreterías y refaccionarias", "Suministros y fabricantes pequeños y medianos"],
+    "price": "",
+    "priceNote": ""
+  },
+  {
+    "slug": "automatizacion-pesaje-etiquetado",
+    "product": "Nodavexa Weigh & Label",
+    "title": "Automatización de pesaje y etiquetado | Nodavexa",
+    "description": "Automatiza el pesaje, generación e impresión de etiquetas conectando básculas, impresoras y software de gestión.",
+    "h1": "Automatización de pesaje y etiquetado para empresas",
+    "lead": "Del peso a la etiqueta y al sistema, sin captura manual.",
+    "whatsapp": "Hola, me interesa automatizar un proceso de pesaje y etiquetado.",
+    "intro": "Conectamos equipos y software para recibir el peso, aplicar las reglas del proceso y generar el registro y la etiqueta correspondientes.",
+    "flow": ["Pesar", "Recibir el peso", "Procesar información", "Generar etiqueta", "Imprimir", "Registrar"],
+    "manualFlow": ["Pesar", "Anotar", "Capturar", "Calcular", "Crear etiqueta", "Imprimir", "Registrar"],
+    "sections": [
+      {
+        "heading": "Del pesaje al registro operativo",
+        "copy": "Una integración puede reducir captura manual, errores y pasos repetidos, manteniendo trazabilidad desde el peso hasta el sistema de gestión.",
+        "items": ["El peso se obtiene desde el equipo compatible.", "El software procesa producto, peso, lote y reglas del negocio.", "Se genera e imprime la etiqueta correspondiente.", "El movimiento puede registrarse en inventario, ERP u otro sistema."]
+      },
+      {
+        "heading": "Cómo funciona",
+        "copy": "La solución se define con base en las estaciones, equipos y sistemas involucrados.",
+        "items": ["Báscula: entrega la lectura del peso.", "Software: procesa los datos y las reglas configuradas.", "Etiqueta: genera el formato para imprimir.", "Registro: integra el movimiento con inventario, ERP u otro sistema cuando es viable."]
+      },
+      {
+        "heading": "Equipos e integraciones posibles",
+        "copy": "Según compatibilidad y alcance, podemos evaluar básculas industriales, impresoras TSC, ZPL, TSPL, códigos de barras, QR, RFID, Odoo, APIs y sistemas de inventario. La tecnología se elige después de revisar el proceso y los equipos."
+      },
+      {
+        "heading": "Aplicaciones",
+        "copy": "Procesos de almacén, producción, empaque, alimentos, logística, distribución y preparación de pedidos."
+      }
+    ],
+    "audiences": ["Almacenes", "Producción y empaque", "Logística y distribución", "Empresas que etiquetan productos por peso"],
+    "price": "",
+    "priceNote": "Cada implementación se cotiza de acuerdo con número de estaciones, equipos, integraciones y proceso requerido."
+  }
+]

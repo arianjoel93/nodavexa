@@ -1,8 +1,27 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+  RewriteRule ^como-funciona/?$ /como-trabajamos [R=301,L]
+  RewriteRule ^que-incluye/?$ /soluciones [R=301,L]
+  RewriteRule ^precio/?$ /contacto [R=301,L]
+  RewriteRule ^demo/?$ /soluciones [R=301,L]
+  RewriteRule ^agendar-demo/?$ /contacto [R=301,L]
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
+  RewriteRule . - [R=404,L]
+</IfModule>
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_headers.c>
+  <FilesMatch "^(index\.html|404\.html)?$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  <FilesMatch "\.(js|css|png|jpg|jpeg|webp|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
 </IfModule>

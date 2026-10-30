@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /admin/
+Disallow: /formularios/
 
 Sitemap: https://nodavexa.com/sitemap.xml
