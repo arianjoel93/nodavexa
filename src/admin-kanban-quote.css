@@ -1,0 +1,23 @@
+.pipeline-board{grid-template-columns:repeat(5,minmax(220px,1fr))}
+.pipeline-board article{transition:background .2s ease,border-color .2s ease,box-shadow .2s ease}
+.pipeline-board article.is-drop-target{background:#fcfaf8;border-color:var(--brown);box-shadow:inset 0 0 0 2px rgba(111,65,47,.18)}
+.pipeline-board button[draggable=true]{cursor:grab}
+.pipeline-board button[draggable=true]:active{cursor:grabbing}
+.pipeline-drop-hint{display:block;padding:8px 10px;border:1px dashed rgba(111,65,47,.4);color:var(--brown);font-size:12px;font-weight:800;text-align:center}
+.quote-preview .quote-head{position:relative;min-height:112px;margin:-42px -42px 32px;padding:28px 42px 42px;overflow:hidden;border:0;background:#c8b9a4;color:#fff;align-items:flex-start}
+.quote-preview.compact .quote-head{min-height:96px;margin:-26px -26px 26px;padding:23px 26px 38px}
+.quote-preview .quote-head::after{content:"";position:absolute;right:-8%;bottom:-30px;width:118%;height:68px;background:#fff;clip-path:ellipse(56% 60% at 50% 100%)}
+.quote-preview .quote-head>div,.quote-preview .quote-head>span{position:relative;z-index:1}
+.quote-preview .quote-head b{color:#fff}
+.quote-preview .quote-head small{color:rgba(255,255,255,.88);font-weight:900;letter-spacing:.12em}
+.quote-preview .quote-head span{color:#fff;font-size:16px;padding-top:2px}
+.quote-client-picker{position:relative;z-index:8}
+.quote-client-picker>label{display:grid;gap:7px}
+.quote-client-options{position:absolute;left:0;right:0;top:calc(100% + 4px);display:grid;gap:3px;padding:6px;background:#fff;border:1px solid #d9cbc0;box-shadow:0 16px 30px rgba(57,42,35,.16);max-height:280px;overflow:auto}
+.quote-client-options button{display:grid;gap:3px;text-align:left;border:0;background:#fff;padding:10px 11px;color:#352923}
+.quote-client-options button:hover{background:#f7f0e9}
+.quote-client-options button b{font-size:13px}.quote-client-options button small{color:#7c6e65;font-size:11px}
+.quote-client-options .quote-client-create{display:flex;align-items:flex-start;gap:8px;margin-top:4px;border-top:1px solid #eadfd8;color:var(--brown);font-weight:800}
+.quote-client-options .quote-client-create svg{flex:none;margin-top:1px}.quote-client-options p{padding:8px 10px;margin:0;color:#8a7a71;font-size:12px}
+@media(max-width:1100px){.pipeline-board{grid-template-columns:repeat(3,minmax(220px,1fr))}}
+@media(max-width:700px){.pipeline-board{grid-template-columns:1fr}.quote-preview .quote-head{margin:-28px -28px 28px;padding:24px 28px 38px}.quote-preview.compact .quote-head{margin:-20px -20px 22px;padding:20px 20px 34px}}

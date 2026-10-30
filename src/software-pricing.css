@@ -1,0 +1,13 @@
+.software-pricing{display:grid;grid-template-columns:minmax(240px,.8fr) 1.2fr;gap:16px;margin:20px 0}
+.software-pricing-note{padding:15px 18px;background:#f6f0ec;color:#6f5f56;font-size:13px;line-height:1.55}
+.software-price-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.software-price-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:15px}
+.software-price-summary span{display:flex;flex-direction:column;padding:16px 18px;border:1px solid #e5dad3;background:#fff}
+.software-price-summary small{color:#786960}.software-price-summary b{font:750 20px Manrope;color:var(--brown);margin-top:4px}
+.sat-rate-config{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;background:#f6f0ec;padding:18px;margin:15px 0}.sat-rate-config p{grid-column:1/-1;margin:0;color:#75665d;font-size:12px}.fiscal-breakdown{margin-top:16px;border:1px solid #e3d7cf;padding:12px 18px;background:#fff}.fiscal-breakdown>div{display:flex;justify-content:space-between;gap:20px;padding:8px 0;color:#6f6058}.fiscal-breakdown .net-row{border-top:1px solid #e3d7cf;margin-top:6px;padding-top:14px;color:var(--brown);font-size:17px}
+.software-card-price{grid-template-columns:1fr auto}.software-card-price em{grid-column:1/-1;font-style:normal;font-size:11px;font-weight:700;color:var(--clay);margin-top:4px}.commercial-card-price b{font-size:21px;line-height:1.15}.commercial-card-price span{align-self:start}.catalog-note{max-width:760px;color:#6f5f56;line-height:1.65;margin:-20px 0 35px;border-left:3px solid var(--clay);padding-left:18px}.solutions-hero p{max-width:760px}
+.public-software-pricing{padding:70px 9vw;background:#f4eee9}.public-software-pricing>span{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--clay)}
+.public-software-pricing h2{font-size:clamp(30px,4vw,48px);margin:14px 0 28px}.public-software-pricing>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:900px}
+.public-software-pricing article{background:#fff;padding:26px;border:1px solid #e3d7cf;display:flex;flex-direction:column}.public-software-pricing small{color:#76675f}.public-software-pricing strong{font:800 clamp(27px,3vw,38px) Manrope;color:var(--brown);margin:8px 0}.public-software-pricing article p,.tax-note{color:#76675f}.tax-note{font-size:12px;margin-top:14px}
+@media(max-width:800px){.software-pricing,.public-software-pricing>div{grid-template-columns:1fr}.software-price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.software-price-grid,.software-price-summary,.sat-rate-config{grid-template-columns:1fr}.sat-rate-config p{grid-column:1}}

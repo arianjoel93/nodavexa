@@ -1,0 +1,309 @@
+{
+  "version": 1,
+  "runId": "4c0f3140-2b2e-4259-ac87-add581daaea7",
+  "tasks": [
+    {
+      "id": "63b410a9-84d3-40bb-8502-7a5d0891e3d1",
+      "type": "warehouse",
+      "status": "running",
+      "dependsOn": [
+        "bbd90336-1263-4539-9acf-e7e162161d66",
+        "c0638047-ff41-4024-9a64-bcf2f71dd11b",
+        "d340d7d1-b912-4fe1-8a17-dac239312ae0",
+        "c63e142a-4879-412f-bfea-dec6bddfb229",
+        "1d0a122d-4a83-4603-9cbe-4d4f990e0c4d",
+        "0014b294-d49d-4743-b0b2-1ed6a00c9c57",
+        "d66833aa-b922-4728-a99c-88244220e094",
+        "c8292fec-8c37-4e6b-828b-f9e3cfdd8877",
+        "2b8fdd95-9bf0-411f-b2a5-889e0a9cfd28"
+      ],
+      "inputs": {
+        "sources": [
+          {
+            "kind": "Supabase",
+            "label": "Supabase",
+            "mode": "in-cli",
+            "matchedSignal": "found `@supabase/supabase-js` in package.json"
+          }
+        ]
+      },
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "optional": true,
+      "createdAt": "2026-09-24T19:03:43.118Z",
+      "startedAt": "2026-09-24T19:11:51.486Z"
+    },
+    {
+      "id": "bbd90336-1263-4539-9acf-e7e162161d66",
+      "type": "install",
+      "label": "Add PostHog SDK",
+      "status": "done",
+      "dependsOn": [],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-09-24T19:04:09.408Z",
+      "startedAt": "2026-09-24T19:04:31.090Z",
+      "handoff": {
+        "goals": "Install the PostHog JavaScript web SDK using the project’s package manager so it is declared in the manifest and lockfile.",
+        "did": "Ran the detected npm package-manager command `npm add posthog-js`. This added `posthog-js` at the registry-resolved version `^1.434.12` to `package.json` and resolved `node_modules/posthog-js` version `1.434.12` in `package-lock.json`. This makes the browser SDK available for subsequent client-side initialization and event instrumentation.",
+        "forNextAgent": "Import the browser-only SDK as `posthog-js` in the client integration step. Do not use it in server-side code. Initialization must read the configured token/host from environment values and be guarded when configuration is absent, per the framework commandments.",
+        "filesTouched": [
+          "package.json",
+          "package-lock.json"
+        ],
+        "evidence": "`npm add posthog-js` completed successfully: added 12 packages and audited 284 packages. Post-install manifest and lockfile inspection confirms `posthog-js: ^1.434.12` and a resolved lockfile package version of `1.434.12`.",
+        "assumptions": "No server-side PostHog event sender was identified within the scope of this installation-only task; therefore only the browser package was added."
+      },
+      "finishedAt": "2026-09-24T19:05:33.541Z"
+    },
+    {
+      "id": "c0638047-ff41-4024-9a64-bcf2f71dd11b",
+      "type": "init",
+      "label": "Initialize PostHog",
+      "status": "done",
+      "dependsOn": [],
+      "inputs": {},
+      "attempts": 2,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-09-24T19:04:10.813Z",
+      "startedAt": "2026-09-24T19:05:29.017Z",
+      "error": {
+        "type": "self-reported",
+        "message": "Install the missing SDK with `npm add posthog-js`. Then add one browser-only singleton initialization module (recommended `src/lib/posthog.ts`) which imports the default posthog-js client, reads VITE_POSTHOG_KEY and VITE_POSTHOG_HOST, initializes only when the key is configured, throws the prescribed VITE_POSTHOG_KEY error in development when missing, and exports that singleton. Import the init module from src/main.tsx before React rendering; all later call sites should import this same client. No app CSP exists, so none needs changing."
+      },
+      "handoff": {
+        "goals": "Initialize PostHog once for this Vite/React browser application, configure the public environment variables through wizard tools, and ensure their names are documented for developers.",
+        "did": "Added `src/lib/posthog.ts`, which imports the browser-only `posthog-js` singleton, reads `VITE_POSTHOG_KEY` and `VITE_POSTHOG_HOST` from Vite environment variables, fails loudly in development if either is absent, and otherwise initializes once with `capture_pageview: 'history_change'` and current SDK defaults. The default export is the initialized client or `undefined` in an unconfigured production build, so later instrumentation can safely use `posthog?.capture(...)`. Updated `src/main.tsx` to import this module before React mounts, ensuring browser initialization happens once. Set both real public configuration values in `.env.local` through `set_env_values`. `.env.example` already listed the two required Vite keys with non-production values, so it was intentionally left unchanged.",
+        "forNextAgent": "Import the default client from `src/lib/posthog`; do not call `posthog.init` elsewhere. Since production may intentionally have no configuration, use optional chaining for client calls. There is no CSP in the inspected project, so `script-src`, `connect-src`, and `worker-src` were all left untouched. Do not run build/lint/tests as part of this completed initialization step.",
+        "filesTouched": [
+          "src/lib/posthog.ts",
+          "src/main.tsx",
+          ".env.local"
+        ],
+        "evidence": "Read the final `src/lib/posthog.ts` and bootstrap import, and `check_env_keys` confirmed `VITE_POSTHOG_KEY` and `VITE_POSTHOG_HOST` are present in `.env.local`. `package.json` already declares `posthog-js`; no dependency change was needed.",
+        "assumptions": "The existing Vite browser entry point (`src/main.tsx`) is the sole client bootstrap. `.env.example` was pre-existing and already documented both required public keys, including a token placeholder, so no edit was necessary."
+      },
+      "finishedAt": "2026-09-24T19:06:12.342Z"
+    },
+    {
+      "id": "d340d7d1-b912-4fe1-8a17-dac239312ae0",
+      "type": "identify",
+      "label": "Configure user identity",
+      "status": "done",
+      "dependsOn": [
+        "bbd90336-1263-4539-9acf-e7e162161d66",
+        "c0638047-ff41-4024-9a64-bcf2f71dd11b"
+      ],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-09-24T19:04:15.290Z",
+      "startedAt": "2026-09-24T19:06:14.183Z",
+      "handoff": {
+        "goals": "Wire client-side PostHog identification so authenticated users receive a stable distinct ID, person properties are set safely, and identity resets on logout.",
+        "did": "Updated `src/pages/Admin.tsx` at the existing Supabase authentication boundary. The Admin screen now identifies an existing session and each `SIGNED_IN` session with the stable Supabase `user.id`. It sends optional email and admin role only as PostHog person properties, never in event properties. A tracked active ID resets PostHog before a direct account switch, while `SIGNED_OUT` resets PostHog and clears the tracked identity. This ensures subsequent browser events and SDK-reported errors inherit the authenticated browser identity without re-identifying at individual event callsites.",
+        "forNextAgent": "Import and use the initialized default client from `src/lib/posthog` with optional chaining for browser instrumentation. No caller needs to add a distinct ID to normal browser events or error reporting: the Admin auth lifecycle persists it after successful authentication and clears it on logout. This is a client-only Vite app; no server-side PostHog integration was identified.",
+        "filesTouched": [
+          "src/pages/Admin.tsx"
+        ],
+        "evidence": "Read the final `src/pages/Admin.tsx` after editing and confirmed it imports the initialized PostHog client, identifies with `authenticatedUser.id` for the initial session and `SIGNED_IN`, conditionally attaches email/role as person properties, and calls reset on `SIGNED_OUT` or a changed authenticated ID. Per task instructions, no build, lint, or tests were run.",
+        "assumptions": "Supabase `User.id` is the application's immutable canonical user identifier, and Supabase emits `SIGNED_IN`/`SIGNED_OUT` through its existing auth-state subscription."
+      },
+      "finishedAt": "2026-09-24T19:07:08.830Z"
+    },
+    {
+      "id": "c63e142a-4879-412f-bfea-dec6bddfb229",
+      "type": "error-tracking",
+      "label": "Capture unhandled errors",
+      "status": "done",
+      "dependsOn": [
+        "bbd90336-1263-4539-9acf-e7e162161d66",
+        "c0638047-ff41-4024-9a64-bcf2f71dd11b"
+      ],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-09-24T19:04:15.296Z",
+      "startedAt": "2026-09-24T19:06:14.196Z",
+      "handoff": {
+        "goals": "Configure one global PostHog mechanism so browser errors the React application does not catch reach Error Tracking.",
+        "did": "Updated `src/lib/posthog.ts`, the existing browser-only PostHog singleton initialization, with an explicit `capture_exceptions` configuration. It captures uncaught window errors and unhandled promise rejections as PostHog exception events while keeping console-error capture disabled. This feeds PostHog Error Tracking with app-level unhandled exceptions without adding manual capture calls across components or routes.",
+        "forNextAgent": "The global error mechanism is configured at the existing PostHog initialization point; do not initialize PostHog again or add per-component exception wrappers for this requirement. Production builds remain safely unconfigured when the environment values are absent, as established by the prior init step. Source maps, build verification, and any project-level Error Tracking settings are outside this instrumentation-only task.",
+        "filesTouched": [
+          "src/lib/posthog.ts"
+        ],
+        "evidence": "Read the final `src/lib/posthog.ts` after the edit and confirmed `capture_exceptions` enables `capture_unhandled_errors` and `capture_unhandled_rejections`, with `capture_console_errors: false`. Confirmed the installed posthog-js SDK exposes exception-autocapture configuration. Per task constraints, no build, lint, tests, dependency installation, or app startup was run.",
+        "assumptions": "This Vite/React browser entry initializes the singleton before mounting, as documented in the prior task handoff. PostHog project-side Error Tracking exception autocapture is enabled or will be enabled for the project, consistent with the supplied web reference."
+      },
+      "finishedAt": "2026-09-24T19:06:48.546Z"
+    },
+    {
+      "id": "1d0a122d-4a83-4603-9cbe-4d4f990e0c4d",
+      "type": "capture",
+      "label": "Instrument key events",
+      "status": "done",
+      "dependsOn": [
+        "d340d7d1-b912-4fe1-8a17-dac239312ae0"
+      ],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-09-24T19:04:17.919Z",
+      "startedAt": "2026-09-24T19:07:12.016Z",
+      "handoff": {
+        "goals": "Choose the app’s high-value user actions, instrument them with attributable PostHog captures, and record the resulting analytics contract.",
+        "did": "Created `.posthog-wizard-cache/.posthog-events.json` containing 11 planned events. Added optional browser-client captures to `src/pages/Contact.tsx` after a successful contact-form submission; `src/pages/Home.tsx` on diagnosis and demo WhatsApp CTA clicks; `src/pages/SolutionDetail.tsx` on a solution inquiry CTA; and `src/components/QuoteCalculator.tsx` after an available shipping quote and when its quote-request CTA is clicked. These public conversion events intentionally capture no form content, contact data, postal code, product name, or other PII; quote events retain only quantity and diagnosis events retain a controlled CTA location. Added `admin_login_succeeded` after the existing Supabase identity call, plus success-only administration events for solution saves, success-case saves, success-case-video saves, and public-contact-setting saves. Admin event calls use the persisted identity established by the prior identify task and include only controlled action/published metadata where relevant.",
+        "forNextAgent": "All added calls import the initialized `src/lib/posthog` singleton and use optional chaining, so production builds without configured PostHog remain no-ops. Public visitor actions are intentionally plain/personless browser captures; authenticated Admin events inherit the stable Supabase user identity established at the existing auth lifecycle. No server-side instrumentation was added because this is a client-only Vite app. The review task should validate TypeScript/build behavior; per task instructions, no build, lint, or tests were run.",
+        "filesTouched": [
+          ".posthog-wizard-cache/.posthog-events.json",
+          "src/pages/Contact.tsx",
+          "src/pages/Home.tsx",
+          "src/pages/SolutionDetail.tsx",
+          "src/components/QuoteCalculator.tsx",
+          "src/pages/Admin.tsx",
+          "src/components/AdminSolutionEditor.tsx",
+          "src/components/AdminCaseEditor.tsx",
+          "src/components/AdminCaseVideoEditor.tsx",
+          "src/components/AdminSettings.tsx"
+        ],
+        "evidence": "Read each modified source file immediately before editing, then reread the completed capture sites and event manifest. Confirmed all 11 manifest names match their capture calls, captures occur only after successful operations or on the actual CTA click, every call uses `posthog?.capture`, and event properties are controlled non-PII values only.",
+        "assumptions": "The existing Supabase `SIGNED_IN` lifecycle continues to fire after successful password sign-in; it identifies the admin before `admin_login_succeeded` is captured."
+      },
+      "finishedAt": "2026-09-24T19:08:38.420Z"
+    },
+    {
+      "id": "0014b294-d49d-4743-b0b2-1ed6a00c9c57",
+      "type": "ai-observability",
+      "label": "Instrument AI calls",
+      "status": "not needed",
+      "dependsOn": [
+        "1d0a122d-4a83-4603-9cbe-4d4f990e0c4d"
+      ],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "optional": true,
+      "createdAt": "2026-09-24T19:04:20.631Z",
+      "startedAt": "2026-09-24T19:08:42.389Z",
+      "skipReason": "agent-not-needed",
+      "notNeededReason": "not-applicable",
+      "handoff": {
+        "goals": "Add AI Observability to existing LLM calls, if the project contains any.",
+        "did": "Made no changes. Read the JavaScript web integration commandments and upstream handoff, then inspected the client source, Supabase Edge Functions, dependency manifest, and documented project content for actual LLM/AI provider call sites. The application only invokes `send-contact` (email persistence/delivery) and `fedex-quote` (FedEx rate API); neither is an LLM call. No OpenAI, Anthropic, Gemini, LangChain, Vercel AI SDK, or equivalent provider dependency/call path exists.",
+        "forNextAgent": "AI Observability is not applicable at this time. No skill was installed, no dependencies are requested for review, and no verification path exists because there is no LLM session/trace/generation tree to produce. Privacy mode is likewise not configured; if a supported LLM call is added later, use the matching AI Observability skill, preserve the established browser PostHog initialization, and default a newly created AI SDK client to `privacyMode: false` unless the product’s privacy/redaction requirements say otherwise. Its controls and rationale are documented at https://posthog.com/docs/ai-observability/privacy-mode.",
+        "evidence": "`package.json` contains no AI/LLM SDK dependency. Searches across `src` and `supabase` found no provider or agent-framework calls. The two discovered backend functions were inspected by their call patterns: `supabase/functions/send-contact/index.ts` uses Nodemailer, while `supabase/functions/fedex-quote/index.ts` calls FedEx OAuth/rating endpoints and an exchange-rate endpoint.",
+        "assumptions": "The inspected project directory contains the app’s complete client and Supabase function call paths; no external, untracked LLM service is represented in this codebase."
+      },
+      "finishedAt": "2026-09-24T19:09:10.578Z"
+    },
+    {
+      "id": "d66833aa-b922-4728-a99c-88244220e094",
+      "type": "dashboard",
+      "label": "Build product dashboard",
+      "status": "done",
+      "dependsOn": [
+        "1d0a122d-4a83-4603-9cbe-4d4f990e0c4d"
+      ],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-09-24T19:04:20.633Z",
+      "startedAt": "2026-09-24T19:08:42.393Z",
+      "handoff": {
+        "goals": "Create a starter PostHog dashboard with a handful of insights based on the integration's captured events, and hand off its URL.",
+        "did": "Created the PostHog dashboard `Analytics basics (wizard)` (ID 2132614) tagged `wizard`, then created and attached five tagged insights: `Lead request volume (wizard)` for daily visitor lead actions; `Shipping quote conversion funnel (wizard)` for quote calculation-to-request conversion; `WhatsApp lead requests (wizard)` for WhatsApp CTA request volume; `Admin publishing activity (wizard)` for successful publishing actions; and `Admin publishing activation funnel (wizard)` for sign-in-to-solution-save activation. These assets form recurring dashboard views over the 11 exact event names in `.posthog-wizard-cache/.posthog-events.json`; no project files were edited.",
+        "forNextAgent": "Dashboard URL: https://us.posthog.com/project/627104/dashboard/2132614. The dashboard contains five live definitions and may be empty until the newly instrumented browser events arrive. Insight IDs: 12194133, 12194134, 12194135, 12194132, and 12194131.",
+        "filesTouched": [],
+        "evidence": "PostHog MCP successfully returned dashboard ID 2132614 with `_posthogUrl` `https://us.posthog.com/project/627104/dashboard/2132614`. Each of the five `insight-create` calls succeeded and returned `saved: true`, a dashboard attachment to ID 2132614, and a dashboard tile.",
+        "reportSection": "## Starter analytics dashboard\n\nCreated [Analytics basics (wizard)](https://us.posthog.com/project/627104/dashboard/2132614) with five wizard-tagged views: lead request volume, WhatsApp lead requests, shipping quote conversion, admin publishing activity, and admin publishing activation. The views cover the exact planned event contract and will populate as production events arrive."
+      },
+      "finishedAt": "2026-09-24T19:09:39.057Z"
+    },
+    {
+      "id": "c8292fec-8c37-4e6b-828b-f9e3cfdd8877",
+      "type": "logs",
+      "label": "Configure log capture",
+      "status": "done",
+      "dependsOn": [
+        "0014b294-d49d-4743-b0b2-1ed6a00c9c57"
+      ],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "optional": true,
+      "createdAt": "2026-09-24T19:04:22.495Z",
+      "startedAt": "2026-09-24T19:09:13.640Z",
+      "handoff": {
+        "goals": "Configure PostHog log capture for this project's supported runtime using the documented JavaScript web SDK-native logging path, while exporting only purpose-written lines added in this run.",
+        "did": "Updated `src/lib/posthog.ts` to enable the posthog-js native Logs stream with the stable service identity `nodavexa-web` and Vite deployment mode. Created `src/lib/posthog-logs.ts` as the dedicated PostHog logger wrapper. It emits only five structured, privacy-safe outcome records added by this run: contact submission completed/failed and shipping quote calculated/unavailable/lookup failed. Updated `src/pages/Contact.tsx` and `src/components/QuoteCalculator.tsx` to call that wrapper at their existing completed/error outcomes. No existing console output or existing application logger is exported; console capture was deliberately not enabled. Log attributes contain only controlled workflow/outcome values and quote quantity, never request bodies, postal codes, solution names, contact-form content, or other user data.",
+        "forNextAgent": "No package installation is required for review: the existing `posthog-js` dependency is version `^1.434.12`, which exceeds the documented Logs minimum of 1.368.0. No new environment variables were added; log delivery reuses `VITE_POSTHOG_KEY` and `VITE_POSTHOG_HOST` configured by upstream. To verify delivery, submit the public contact form or calculate a shipping quote with a valid postal code, then open https://us.posthog.com/logs and filter by service `nodavexa-web`; delivery remains unverified until a record is observed. Only lines added in this run are exported. If the user later explicitly wants browser console/application output routed to this exporter, add `captureConsoleLogs: true` inside the existing `logs` init configuration after auditing that output for secrets and PII.",
+        "filesTouched": [
+          "src/lib/posthog.ts",
+          "src/lib/posthog-logs.ts",
+          "src/pages/Contact.tsx",
+          "src/components/QuoteCalculator.tsx"
+        ],
+        "evidence": "Read the JavaScript web commandment file, installed and read the `logs-javascript` skill and its JavaScript reference, confirmed the project is browser-only Vite with no existing client logging configuration, and reread all modified files after changes. Confirmed `captureConsoleLogs` is absent and all new logging calls flow through the dedicated wrapper. Builds, lint, dependency manifest changes, and lockfile updates were intentionally left to review per task instructions.",
+        "assumptions": "The configured browser PostHog endpoint accepts Logs for the supplied project and the Vite `MODE` value accurately describes each deployment environment."
+      },
+      "finishedAt": "2026-09-24T19:10:06.054Z"
+    },
+    {
+      "id": "2b8fdd95-9bf0-411f-b2a5-889e0a9cfd28",
+      "type": "review",
+      "label": "Review integration",
+      "status": "done",
+      "dependsOn": [
+        "bbd90336-1263-4539-9acf-e7e162161d66",
+        "c0638047-ff41-4024-9a64-bcf2f71dd11b",
+        "d340d7d1-b912-4fe1-8a17-dac239312ae0",
+        "1d0a122d-4a83-4603-9cbe-4d4f990e0c4d",
+        "c63e142a-4879-412f-bfea-dec6bddfb229",
+        "0014b294-d49d-4743-b0b2-1ed6a00c9c57",
+        "c8292fec-8c37-4e6b-828b-f9e3cfdd8877"
+      ],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-09-24T19:04:25.882Z",
+      "startedAt": "2026-09-24T19:10:08.244Z",
+      "handoff": {
+        "goals": "Install all declared and upstream-requested PostHog dependencies, verify the project build/typecheck/lint commands, and strictly review the complete handed-off integration for minimality, unrelated edits, codebase patterns, and framework/example correctness.",
+        "did": "Ran the detected npm command `npm install`; dependencies were already up to date, with `posthog-js` resolved at 1.434.12 and no peer conflict. Confirmed both required Vite PostHog keys are present in `.env.local` through `check_env_keys`. Read the full handed-off changeset and one neighboring environment/client-construction example (`src/lib/supabase.ts`), then reviewed all capture callers and the event contract. Review result: 0 fixes. Minimal passed because all added helpers/config/calls are used; Unrelated passed because no analytics addition displaced unrelated behavior; Codebase patterns passed because singleton/env/import/call-site shapes align with neighboring code; Example shapes passed because initialization is global and early, configuration is guarded, SPA pageviews and exception capture use supported SDK options, identity/reset behavior is correctly wired, and static snake_case events carry no PII. No files were edited in this task. `npm run build` passed TypeScript compilation, Vite production build, and SEO generation. `npm run lint` could not start because ESLint 9 has no flat config file in the project; this is pre-existing and unrelated to PostHog.",
+        "forNextAgent": "The integration build is green and needs no code correction. Treat lint as unavailable until the project adds an ESLint 9 `eslint.config.js`, `eslint.config.mjs`, or `eslint.config.cjs`; do not attribute that configuration gap to this integration. Error Tracking source-map upload remains a deployment-pipeline follow-up outside this instrumentation changeset. Existing npm audit findings and Vite's large-chunk warning were observed but are unrelated and were not modified.",
+        "filesTouched": [],
+        "evidence": "`npm install` reported up to date and audited 284 packages. `check_env_keys` reported both `VITE_POSTHOG_KEY` and `VITE_POSTHOG_HOST` present in `.env.local`. `npm run build` completed successfully: 1812 modules transformed, production assets emitted, and SEO generated for 6 solutions/12 URLs. Full changeset review found 0 fixes. `npm run lint` exited 2 before analyzing files because ESLint could not find an `eslint.config.*` file.",
+        "assumptions": "Upstream handoffs accurately define the complete integration changeset and correctly state that no CSP exists. Runtime event delivery was not exercised, as this task's verification bar is install/build/static review rather than browser interaction.",
+        "conflict": "`npm run lint` cannot start because the project lacks the ESLint 9 flat configuration file; this pre-existing tooling issue is unrelated to PostHog."
+      },
+      "finishedAt": "2026-09-24T19:11:47.836Z"
+    },
+    {
+      "id": "dbfafe5a-7bda-4d96-9eb8-e05ee77b0dc9",
+      "type": "report",
+      "label": "Publish setup report",
+      "status": "pending",
+      "dependsOn": [
+        "d66833aa-b922-4728-a99c-88244220e094",
+        "2b8fdd95-9bf0-411f-b2a5-889e0a9cfd28",
+        "63b410a9-84d3-40bb-8502-7a5d0891e3d1"
+      ],
+      "inputs": {},
+      "attempts": 0,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-09-24T19:04:29.119Z"
+    }
+  ]
+}

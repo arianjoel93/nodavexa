@@ -1,0 +1,95 @@
+[
+  {
+    "slug": "crm-personalizado-guadalajara",
+    "title": "CRM personalizado para PYMES en Guadalajara | Nodavexa",
+    "description": "CRM personalizado para empresas de Guadalajara. Centraliza clientes, cotizaciones, seguimiento comercial, ventas y procesos en un solo sistema.",
+    "h1": "CRM personalizado para PYMES en Guadalajara",
+    "lead": "Organiza clientes, oportunidades y seguimientos en un CRM diseñado alrededor de la forma en que vende tu empresa. Atendemos proyectos en Guadalajara y todo México.",
+    "sections": [
+      { "heading": "¿Cuándo necesitas un CRM personalizado?", "copy": "Puede ser momento de revisar tu proceso comercial si:", "items": ["Cada vendedor lleva sus contactos por separado.", "Clientes y conversaciones están repartidos entre Excel y WhatsApp.", "No sabes qué cotizaciones necesitan seguimiento.", "Necesitas adaptar el sistema al proceso real de tu empresa.", "Las herramientas genéricas no cubren tus etapas, permisos o reportes."] },
+      { "heading": "Un lugar para continuar cada relación comercial", "copy": "Según el alcance acordado, un CRM puede reunir datos de clientes, vendedores responsables, actividades, cotizaciones, oportunidades, recordatorios y reportes. El equipo puede consultar el historial y reconocer cuál es el siguiente paso sin reconstruirlo desde mensajes y archivos.", "items": ["Seguimiento de prospectos y clientes.", "Registro de actividades, notas y próximos pasos.", "Control de oportunidades y cotizaciones.", "Paneles y reportes para revisar el proceso comercial.", "Automatizaciones e integraciones con otras herramientas cuando aporten valor."] },
+      { "heading": "A la medida no significa empezar con todo", "copy": "Primero revisamos cómo trabaja el equipo y qué información necesita. Después definimos una primera etapa útil, los datos que se deben importar, las integraciones necesarias y los permisos. Así puedes comparar una solución personalizada con un CRM genérico con criterios de operación, no sólo por una lista de funciones." }
+    ],
+    "faqs": [
+      ["¿En qué se diferencia de un CRM estándar?", "Se define a partir de las etapas, información, permisos e integraciones que realmente requiere el proceso de tu empresa. El alcance se acuerda antes del desarrollo."],
+      ["¿Pueden importar datos desde Excel?", "Podemos revisar los archivos y la calidad de los datos para definir una estrategia de importación dentro del alcance del proyecto."],
+      ["¿Puede integrarse con otros sistemas?", "Sí, cuando los sistemas ofrecen una vía técnica compatible, como una API o una exportación estructurada. Se valida durante el diagnóstico."],
+      ["¿Trabajan sólo en Guadalajara?", "No. Nodavexa opera desde Guadalajara, Jalisco, y atiende proyectos en todo México." ]
+    ],
+    "related": ["software-a-medida-guadalajara", "automatizacion-procesos-guadalajara", "integraciones-odoo"]
+  },
+  {
+    "slug": "software-a-medida-guadalajara",
+    "title": "Software a medida para empresas en Guadalajara | Nodavexa",
+    "description": "Desarrollo de software a medida para empresas de Guadalajara. Digitalizamos procesos internos, conectamos sistemas y eliminamos tareas manuales.",
+    "h1": "Software a medida para empresas en Guadalajara",
+    "lead": "Cuando Excel, WhatsApp, correo y archivos dispersos se convierten en parte del proceso, diseñamos una herramienta que centraliza la información y acompaña cómo trabaja tu equipo.",
+    "sections": [
+      { "heading": "Sistemas internos pensados para la operación", "copy": "Desarrollamos aplicaciones web y sistemas internos para procesos que necesitan más control o visibilidad. El proyecto puede incluir administración, dashboards, flujos personalizados, usuarios y permisos, APIs e integraciones, de acuerdo con los requisitos definidos.", "items": ["Captura y consulta de información operativa.", "Flujos de trabajo y aprobaciones.", "Paneles para consultar actividad y pendientes.", "Usuarios, roles y permisos.", "Integraciones con herramientas y APIs existentes."] },
+      { "heading": "Resolver primero; elegir tecnología después", "copy": "El punto de partida es entender dónde se duplica el trabajo, dónde se pierde información y qué decisiones necesitan datos más claros. Con eso definimos alcance, entregas por etapas, pruebas y acompañamiento; no proponemos tecnología sin un problema operativo que atender." },
+      { "heading": "De archivos dispersos a información conectada", "copy": "El software a medida puede ayudar a reducir recapturas y errores, dar visibilidad al proceso y reunir información en un solo flujo. Los cambios dependen del uso, los datos disponibles y el alcance acordado; no se presuponen ahorros ni resultados sin medirlos." }
+    ],
+    "faqs": [
+      ["¿Qué tipo de software pueden desarrollar?", "Aplicaciones web, sistemas internos, portales y herramientas de gestión definidas con base en las necesidades del proyecto."],
+      ["¿Pueden conectar el sistema con APIs?", "Sí, si la plataforma externa ofrece una interfaz compatible y el acceso requerido. Revisamos esa viabilidad al definir el alcance."],
+      ["¿Es necesario reemplazar todos los sistemas actuales?", "No. Se puede complementar o conectar lo que ya funciona; cualquier reemplazo se evalúa con el proceso y sus dependencias."],
+      ["¿Atienden empresas fuera de Guadalajara?", "Sí. Atendemos proyectos en todo México." ]
+    ],
+    "related": ["crm-personalizado-guadalajara", "automatizacion-procesos-guadalajara", "integraciones-odoo"]
+  },
+  {
+    "slug": "automatizacion-procesos-guadalajara",
+    "title": "Automatización de procesos empresariales en Guadalajara | Nodavexa",
+    "description": "Automatizamos tareas manuales, procesos administrativos e integraciones para PYMES mediante software personalizado y APIs.",
+    "h1": "Automatización de procesos para empresas en Guadalajara",
+    "lead": "Conectamos pasos que hoy dependen de copiar datos, enviar correos y actualizar varias herramientas. Primero mapeamos el proceso; automatizamos sólo donde sea claro y verificable.",
+    "sections": [
+      { "heading": "Tareas que conviene revisar", "copy": "La automatización puede ser útil cuando un flujo repite actividades previsibles y consume tiempo del equipo:", "items": ["Captura manual de datos desde formularios o archivos Excel.", "Generación y envío de documentos o notificaciones.", "Actualización de información en varios sistemas.", "Reportes y tareas recurrentes.", "Integraciones entre correo, APIs, plataformas y sistemas internos."] },
+      { "heading": "Un flujo antes y después", "flow": true, "copy": "El siguiente diagrama es un ejemplo conceptual; cada automatización depende de las reglas y herramientas reales del negocio." },
+      { "heading": "Integraciones con control", "copy": "Definimos qué datos entran, qué validaciones se aplican, qué sistema conserva el registro y cómo se informa una excepción. Esto permite que el proceso automatizado sea comprensible y revisable por el equipo." }
+    ],
+    "faqs": [
+      ["¿Se pueden automatizar procesos que empiezan en Excel?", "A menudo se puede integrar una hoja o su exportación, pero hay que revisar estructura, calidad, volumen y cómo se actualiza el archivo."],
+      ["¿Pueden integrar correo, WhatsApp y otros sistemas?", "Se evalúa cada plataforma y sus opciones oficiales de integración. La disponibilidad y los permisos técnicos determinan el alcance."],
+      ["¿La automatización elimina la revisión humana?", "No necesariamente. Se pueden definir aprobaciones, alertas y manejo de excepciones para conservar supervisión donde haga falta."],
+      ["¿Trabajan en Guadalajara y otras ciudades?", "Sí. Operamos desde Guadalajara y atendemos proyectos en todo México." ]
+    ],
+    "related": ["software-a-medida-guadalajara", "integraciones-odoo", "crm-personalizado-guadalajara"]
+  },
+  {
+    "slug": "sistemas-inventario-almacenes",
+    "title": "Software de inventario y almacenes para PYMES | Nodavexa",
+    "description": "Controla existencias, movimientos, entradas, salidas y almacenes con software adaptado a la operación de tu empresa.",
+    "h1": "Software para inventarios, almacenes y bodegas",
+    "lead": "Diseñamos sistemas para consultar existencias y registrar movimientos con reglas que correspondan a tus productos, almacenes y responsables. Atendemos Guadalajara y todo México.",
+    "sections": [
+      { "heading": "Control de movimientos con trazabilidad", "copy": "Según los requisitos, el sistema puede contemplar productos, múltiples almacenes, entradas, salidas, transferencias, responsables e historial de movimientos. Los reportes ayudan a consultar información operativa sin depender de consolidar varios archivos.", "items": ["Catálogo y existencias por almacén.", "Registro de entradas, salidas y transferencias.", "Responsables e historial de movimientos.", "Reportes de disponibilidad y actividad.", "Códigos de barras, etiquetas e integraciones cuando el proyecto y el equipo lo requieren."] },
+      { "heading": "Para almacenes, bodegas y operaciones con stock", "copy": "Un inventario útil refleja las reglas de la operación: cómo se recibe, identifica, mueve y consulta cada artículo. Durante el diagnóstico definimos ubicaciones, permisos, datos iniciales, dispositivos y conexiones necesarias." },
+      { "heading": "También puede conectarse con ventas y compras", "copy": "Si la operación lo requiere, revisamos integraciones con CRM, sistemas administrativos, Odoo, APIs o herramientas de captura. La compatibilidad se valida antes de comprometer el alcance." }
+    ],
+    "faqs": [
+      ["¿Puede manejar más de un almacén?", "El diseño puede contemplar varios almacenes y transferencias; se define según ubicaciones, reglas y permisos que maneja la empresa."],
+      ["¿Pueden usar lectores o códigos de barras?", "Se puede evaluar el uso de códigos y lectores compatibles. El hardware y los flujos de captura se validan durante el diagnóstico."],
+      ["¿Pueden importar el inventario desde Excel?", "Sí, después de revisar el formato y la calidad de los datos para definir las validaciones y el proceso de carga."],
+      ["¿Se puede integrar con Odoo?", "Sí, cuando el flujo y los mecanismos disponibles permiten una integración compatible. Revisa también la página de integraciones Odoo." ]
+    ],
+    "related": ["integraciones-odoo", "software-a-medida-guadalajara", "automatizacion-procesos-guadalajara"]
+  },
+  {
+    "slug": "integraciones-odoo",
+    "title": "Integraciones y desarrollos Odoo para empresas | Nodavexa",
+    "description": "Conectamos Odoo con sistemas internos, APIs, reportes, automatizaciones, impresoras, logística y otras herramientas empresariales.",
+    "h1": "Integraciones y desarrollos para Odoo",
+    "lead": "Extendemos Odoo cuando tu operación necesita algo que el flujo estándar no resuelve. No lo planteamos como reemplazo: buscamos conectar y complementar lo que ya utiliza tu empresa.",
+    "sections": [
+      { "heading": "Conecta Odoo con la operación que ya tienes", "copy": "Revisamos flujos entre Odoo, sistemas externos y herramientas internas. Según la viabilidad técnica, un proyecto puede abarcar APIs, dashboards, automatización, reportes, inventario, cotizaciones, logística, impresión y etiquetas.", "items": ["Integración mediante APIs y servicios disponibles.", "Sincronización de información entre plataformas.", "Reportes y dashboards operativos.", "Automatizaciones y flujos complementarios.", "Conexiones con impresión, etiquetas o hardware cuando el equipo y las interfaces lo permiten."] }
+    ],
+    "faqs": [
+      ["¿Nodavexa reemplaza Odoo?", "No. El enfoque es extender Odoo o conectarlo con otras herramientas cuando el flujo estándar no cubre una necesidad específica."],
+      ["¿Pueden integrar Odoo con APIs externas?", "Sí, si la versión y los sistemas involucrados ofrecen interfaces compatibles y se cuenta con los permisos necesarios."],
+      ["¿Pueden integrar impresión, etiquetas o hardware?", "Se puede evaluar cada equipo según sus interfaces, controladores, protocolos y entorno de operación."],
+      ["¿Trabajan con empresas fuera de Guadalajara?", "Sí. Atendemos proyectos en todo México." ]
+    ],
+    "related": ["sistemas-inventario-almacenes", "automatizacion-procesos-guadalajara", "software-a-medida-guadalajara"]
+  }
+]
